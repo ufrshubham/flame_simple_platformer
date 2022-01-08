@@ -46,7 +46,6 @@ app.*.map.json
 /android/app/release
 
 # Platforms
-android/
 ios/
 windows/
 linux/
