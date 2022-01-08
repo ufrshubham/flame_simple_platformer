@@ -30,6 +30,8 @@ $ flutter run
 
 - [Initial Setup](https://github.com/ufrshubham/flame_simple_platformer/tree/9a8916126a691e895c00bd40a16b122b48cbea54)
 
+- [Levels using TiledComponent](https://github.com/ufrshubham/flame_simple_platformer/tree/680df46e70c04370000179d2a3e39f69ee85ad9b)
+
 ## License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
