@@ -1,0 +1,25 @@
+name: flame_simple_platformer
+description: A 2d platformer made using Flame engine
+
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.15.1 <3.0.0"
+
+dependencies:
+  flame: 1.0.0
+  flame_tiled: 1.0.0
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/tiles/
