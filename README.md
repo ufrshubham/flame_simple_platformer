@@ -28,7 +28,7 @@ $ flutter run
 
 ## Browse by timeline
 
-- [Initial Setup](https://github.com/ufrshubham/flame_simple_platformer/tree/)
+- [Initial Setup](https://github.com/ufrshubham/flame_simple_platformer/tree/9a8916126a691e895c00bd40a16b122b48cbea54)
 
 ## License
 
