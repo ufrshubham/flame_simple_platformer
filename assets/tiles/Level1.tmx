@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="2" nextobjectid="1">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="22">
  <tileset firstgid="1" source="Spritesheet.tsx"/>
  <layer id="1" name="Tile Layer 1" width="20" height="12">
   <data encoding="base64">
    BwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAcAAAAHAAAABwAAAAcAAAAHAAAABwAAAAYAAAAGAAAABgAAAAYAAAAHAAAABwAAAAcAAAAHAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABwAAAAcAAAAHAAAABwAAAAcAAAAHAAAABgAAAAYAAAAGAAAABgAAAAcAAAAHAAAABwAAAAcAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAA
   </data>
  </layer>
+ <objectgroup id="3" name="SpawnPoints">
+  <object id="8" type="Player" x="32" y="288" width="32" height="32"/>
+  <object id="9" type="Coin" x="192" y="224" width="32" height="32"/>
+  <object id="10" type="Coin" x="288" y="224" width="32" height="32"/>
+  <object id="11" type="Coin" x="352" y="128" width="32" height="32"/>
+  <object id="12" type="Coin" x="448" y="160" width="32" height="32"/>
+  <object id="13" type="Coin" x="512" y="160" width="32" height="32"/>
+  <object id="14" type="Door" x="576" y="128" width="64" height="64"/>
+  <object id="15" gid="1" x="32" y="320" width="32" height="32"/>
+  <object id="16" gid="4" x="192" y="256" width="32" height="32"/>
+  <object id="17" gid="4" x="288" y="256" width="32" height="32"/>
+  <object id="18" gid="4" x="352" y="160" width="32" height="32"/>
+  <object id="19" gid="4" x="448" y="192" width="32" height="32"/>
+  <object id="20" gid="4" x="512" y="192" width="32" height="32"/>
+  <object id="21" gid="3" x="576" y="192" width="64" height="64"/>
+ </objectgroup>
 </map>

@@ -1,3 +1,4 @@
+import 'package:flame/extensions.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 
@@ -8,11 +9,16 @@ class SimplePlatformer extends FlameGame {
   // Currently active level
   Level? _currentLevel;
 
+  // Reference to common spritesheet
+  late Image spriteSheet;
+
   @override
   Future<void>? onLoad() async {
     // Device setup
     await Flame.device.fullScreen();
     await Flame.device.setLandscape();
+
+    spriteSheet = await images.load('Spritesheet.png');
 
     camera.viewport = FixedResolutionViewport(
       Vector2(640, 330),

@@ -32,6 +32,8 @@ $ flutter run
 
 - [Levels using TiledComponent](https://github.com/ufrshubham/flame_simple_platformer/tree/680df46e70c04370000179d2a3e39f69ee85ad9b)
 
+- [Spawn components using Object layer]()
+
 ## License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
