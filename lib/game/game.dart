@@ -1,11 +1,11 @@
-import 'package:flame/extensions.dart';
-import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
+import 'package:flame/flame.dart';
+import 'package:flame/extensions.dart';
 
 import 'level/level.dart';
 
 // Represents the game world
-class SimplePlatformer extends FlameGame {
+class SimplePlatformer extends FlameGame with HasCollidables {
   // Currently active level
   Level? _currentLevel;
 
