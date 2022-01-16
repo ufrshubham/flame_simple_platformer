@@ -34,6 +34,8 @@ $ flutter run
 
 - [Spawn components using Object layer](https://github.com/ufrshubham/flame_simple_platformer/tree/e2658d9961f306d919dd1855dd1df4f2a5b5d8c8)
 
+- [Collidable platforms](https://github.com/ufrshubham/flame_simple_platformer/tree/c3f1794d939751103061ba19b4990086f74a6f24)
+
 ## License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
