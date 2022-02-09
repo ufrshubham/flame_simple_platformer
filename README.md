@@ -36,6 +36,8 @@ $ flutter run
 
 - [Collidable platforms](https://github.com/ufrshubham/flame_simple_platformer/tree/c3f1794d939751103061ba19b4990086f74a6f24)
 
+- [Player movement](https://github.com/ufrshubham/flame_simple_platformer/tree/5dd05495e371e3cd88a584d23a8abcdbb6356db4)
+
 ## License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
