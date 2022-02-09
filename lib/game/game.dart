@@ -1,11 +1,13 @@
 import 'package:flame/game.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/extensions.dart';
+import 'package:flame/input.dart';
 
 import 'level/level.dart';
 
 // Represents the game world
-class SimplePlatformer extends FlameGame with HasCollidables {
+class SimplePlatformer extends FlameGame
+    with HasCollidables, HasKeyboardHandlerComponents {
   // Currently active level
   Level? _currentLevel;
 
