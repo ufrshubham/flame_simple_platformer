@@ -19,8 +19,13 @@ class Player extends SpriteComponent
   final Vector2 _up = Vector2(0, -1);
   final Vector2 _velocity = Vector2.zero();
 
+  // Limits for clamping player.
+  late Vector2 _minClamp;
+  late Vector2 _maxClamp;
+
   Player(
     Image image, {
+    required Rect levelBounds,
     Vector2? position,
     Vector2? size,
     Vector2? scale,
@@ -37,7 +42,14 @@ class Player extends SpriteComponent
           angle: angle,
           anchor: anchor,
           priority: priority,
-        );
+        ) {
+    // Since anchor point for player is at the center,
+    // min and max clamp limits will have to be adjusted by
+    // half-size of player.
+    final halfSize = size! / 2;
+    _minClamp = levelBounds.topLeft.toVector2() + halfSize;
+    _maxClamp = levelBounds.bottomRight.toVector2() - halfSize;
+  }
 
   @override
   Future<void>? onLoad() {
@@ -68,6 +80,9 @@ class Player extends SpriteComponent
 
     // delta movement = velocity * time
     position += _velocity * dt;
+
+    // Keeps player within level bounds.
+    position.clamp(_minClamp, _maxClamp);
 
     // Flip player if needed.
     if (_hAxisInput < 0 && scale.x > 0) {

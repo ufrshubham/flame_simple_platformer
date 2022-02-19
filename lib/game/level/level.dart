@@ -1,4 +1,5 @@
 import 'package:flame/components.dart';
+import 'package:flame/extensions.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
 import '../game.dart';
@@ -11,6 +12,8 @@ import '../actors/platform.dart';
 // Represents a level in game.
 class Level extends Component with HasGameRef<SimplePlatformer> {
   final String levelName;
+  late Player _player;
+  late Rect _levelBounds;
 
   Level(this.levelName) : super();
 
@@ -22,7 +25,15 @@ class Level extends Component with HasGameRef<SimplePlatformer> {
     );
     add(level);
 
+    _levelBounds = Rect.fromLTWH(
+      0,
+      0,
+      (level.tileMap.map.width * level.tileMap.map.tileWidth).toDouble(),
+      (level.tileMap.map.height * level.tileMap.map.tileHeight).toDouble(),
+    );
+
     _spawnActors(level.tileMap);
+    _setupCamera();
 
     return super.onLoad();
   }
@@ -45,12 +56,14 @@ class Level extends Component with HasGameRef<SimplePlatformer> {
     for (final spawnPoint in spawnPointsLayer.objects) {
       switch (spawnPoint.type) {
         case 'Player':
-          final player = Player(
+          _player = Player(
             gameRef.spriteSheet,
+            anchor: Anchor.center,
+            levelBounds: _levelBounds,
             position: Vector2(spawnPoint.x, spawnPoint.y),
             size: Vector2(spawnPoint.width, spawnPoint.height),
           );
-          add(player);
+          add(_player);
 
           break;
 
@@ -85,5 +98,14 @@ class Level extends Component with HasGameRef<SimplePlatformer> {
           break;
       }
     }
+  }
+
+  // This method is responsible for making the camera
+  // follow the player component and also for keeping
+  // the camera within level bounds.
+  /// NOTE: Call only after [_spawnActors].
+  void _setupCamera() {
+    gameRef.camera.followComponent(_player);
+    gameRef.camera.worldBounds = _levelBounds;
   }
 }
