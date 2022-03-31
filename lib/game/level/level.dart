@@ -1,6 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flame/extensions.dart';
 import 'package:flame_tiled/flame_tiled.dart';
+import 'package:tiled/tiled.dart';
 
 import '../game.dart';
 import '../actors/coin.dart';
@@ -41,9 +42,9 @@ class Level extends Component with HasGameRef<SimplePlatformer> {
   // This method takes care of spawning
   // all the actors in the game world.
   void _spawnActors(RenderableTiledMap tileMap) {
-    final platformsLayer = tileMap.getObjectGroupFromLayer('Platforms');
+    final platformsLayer = tileMap.getLayer<ObjectGroup>('Platforms');
 
-    for (final platformObject in platformsLayer.objects) {
+    for (final platformObject in platformsLayer!.objects) {
       final platform = Platform(
         position: Vector2(platformObject.x, platformObject.y),
         size: Vector2(platformObject.width, platformObject.height),
@@ -51,9 +52,9 @@ class Level extends Component with HasGameRef<SimplePlatformer> {
       add(platform);
     }
 
-    final spawnPointsLayer = tileMap.getObjectGroupFromLayer('SpawnPoints');
+    final spawnPointsLayer = tileMap.getLayer<ObjectGroup>('SpawnPoints');
 
-    for (final spawnPoint in spawnPointsLayer.objects) {
+    for (final spawnPoint in spawnPointsLayer!.objects) {
       switch (spawnPoint.type) {
         case 'Player':
           _player = Player(

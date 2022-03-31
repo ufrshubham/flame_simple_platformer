@@ -7,7 +7,7 @@ import 'level/level.dart';
 
 // Represents the game world
 class SimplePlatformer extends FlameGame
-    with HasCollidables, HasKeyboardHandlerComponents {
+    with HasCollisionDetection, HasKeyboardHandlerComponents {
   // Currently active level
   Level? _currentLevel;
 
