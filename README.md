@@ -40,6 +40,8 @@ $ flutter run
 
 - [Camera movement and level bounds](https://github.com/ufrshubham/flame_simple_platformer/tree/ad58f9fd8650e0b0a4095d62595eeff2bf0129de)
 
+- [Version-up Flame 1.1.0](https://github.com/ufrshubham/flame_simple_platformer/tree/80d58fd3e11af5deba9cb4b273af725c58cfcb77)
+
 ## License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
