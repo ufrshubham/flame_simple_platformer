@@ -55,14 +55,17 @@ class Level extends Component with HasGameRef<SimplePlatformer> {
     final spawnPointsLayer = tileMap.getLayer<ObjectGroup>('SpawnPoints');
 
     for (final spawnPoint in spawnPointsLayer!.objects) {
+      final position = Vector2(spawnPoint.x, spawnPoint.y - spawnPoint.height);
+      final size = Vector2(spawnPoint.width, spawnPoint.height);
+
       switch (spawnPoint.type) {
         case 'Player':
           _player = Player(
             gameRef.spriteSheet,
             anchor: Anchor.center,
             levelBounds: _levelBounds,
-            position: Vector2(spawnPoint.x, spawnPoint.y),
-            size: Vector2(spawnPoint.width, spawnPoint.height),
+            position: position,
+            size: size,
           );
           add(_player);
 
@@ -71,8 +74,8 @@ class Level extends Component with HasGameRef<SimplePlatformer> {
         case 'Coin':
           final coin = Coin(
             gameRef.spriteSheet,
-            position: Vector2(spawnPoint.x, spawnPoint.y),
-            size: Vector2(spawnPoint.width, spawnPoint.height),
+            position: position,
+            size: size,
           );
           add(coin);
 
@@ -81,8 +84,8 @@ class Level extends Component with HasGameRef<SimplePlatformer> {
         case 'Enemy':
           final enemy = Enemy(
             gameRef.spriteSheet,
-            position: Vector2(spawnPoint.x, spawnPoint.y),
-            size: Vector2(spawnPoint.width, spawnPoint.height),
+            position: position,
+            size: size,
           );
           add(enemy);
 
@@ -91,8 +94,11 @@ class Level extends Component with HasGameRef<SimplePlatformer> {
         case 'Door':
           final door = Door(
             gameRef.spriteSheet,
-            position: Vector2(spawnPoint.x, spawnPoint.y),
-            size: Vector2(spawnPoint.width, spawnPoint.height),
+            position: position,
+            size: size,
+            onPlayerEnter: () {
+              gameRef.loadLevel(spawnPoint.properties.first.value);
+            },
           );
           add(door);
 
