@@ -4,12 +4,16 @@ import 'package:flame/extensions.dart';
 import 'package:flame/input.dart';
 
 import 'level/level.dart';
+import 'touch_controls.dart';
 
 // Represents the game world
 class SimplePlatformer extends FlameGame
-    with HasCollisionDetection, HasKeyboardHandlerComponents {
+    with HasCollisionDetection, HasKeyboardHandlerComponents, HasTappables {
   // Currently active level
   Level? _currentLevel;
+
+  // On-screen controls.
+  late TouchControls touchControls;
 
   // Reference to common spritesheet
   late Image spriteSheet;
@@ -25,6 +29,10 @@ class SimplePlatformer extends FlameGame
     camera.viewport = FixedResolutionViewport(
       Vector2(640, 330),
     );
+
+    // Add on-screen controls.
+    touchControls = TouchControls(position: Vector2.zero(), priority: 1);
+    add(touchControls);
 
     loadLevel('Level1.tmx');
 

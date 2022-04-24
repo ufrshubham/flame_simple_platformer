@@ -2,10 +2,12 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/image_composition.dart';
 import 'package:flame_simple_platformer/game/actors/platform.dart';
+import 'package:flame_simple_platformer/game/game.dart';
 import 'package:flutter/services.dart';
 
 // Represents a player in the game world.
-class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
+class Player extends SpriteComponent
+    with CollisionCallbacks, KeyboardHandler, HasGameRef<SimplePlatformer> {
   int _hAxisInput = 0;
   bool _jumpInput = false;
   bool _isOnGround = false;
@@ -53,6 +55,14 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
   Future<void>? onLoad() {
     add(CircleHitbox());
     return super.onLoad();
+  }
+
+  @override
+  void onMount() {
+    // As soon as the player is mounted,
+    // connect it with the on-screen controls.
+    gameRef.touchControls.connectPlayer(this);
+    super.onMount();
   }
 
   @override
@@ -128,5 +138,15 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
       }
     }
     super.onCollision(intersectionPoints, other);
+  }
+
+  // Setter for horizontal input.
+  set hAxisInput(int value) {
+    _hAxisInput = value;
+  }
+
+  // Setter for jump input.
+  set jump(bool jump) {
+    _jumpInput = jump;
   }
 }
