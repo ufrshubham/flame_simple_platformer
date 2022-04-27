@@ -44,6 +44,10 @@ $ flutter run
 
 - [Interactable doors](https://github.com/ufrshubham/flame_simple_platformer/tree/a0230e923b0e0b6186494c234397df445675287c)
 
+- [Version-up Flame 1.1.1](https://github.com/ufrshubham/flame_simple_platformer/tree/cc1b046d103d02187e7b7601fd91715650a36f9d)
+
+- [Coins and effects](https://github.com/ufrshubham/flame_simple_platformer/tree/76d181e7fac6a85e7b2aca65cd9376dfb855a706)
+
 ## License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
