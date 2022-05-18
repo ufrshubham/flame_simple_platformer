@@ -48,6 +48,8 @@ $ flutter run
 
 - [Coins and effects](https://github.com/ufrshubham/flame_simple_platformer/tree/76d181e7fac6a85e7b2aca65cd9376dfb855a706)
 
+- [Enemy movement and collision](https://github.com/ufrshubham/flame_simple_platformer/tree/08953150b7d086c9b8c7f5d2280653fa2b8f1ba3)
+
 ## License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
