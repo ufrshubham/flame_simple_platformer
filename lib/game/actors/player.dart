@@ -1,5 +1,6 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flame/image_composition.dart';
 import 'package:flame_simple_platformer/game/actors/platform.dart';
 import 'package:flutter/services.dart';
@@ -128,5 +129,19 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
       }
     }
     super.onCollision(intersectionPoints, other);
+  }
+
+  // This method runs an opacity effect on player 
+  // to make it blink.
+  void hit() {
+    add(
+      OpacityEffect.fadeOut(
+        EffectController(
+          alternate: true,
+          duration: 0.1,
+          repeatCount: 5,
+        ),
+      ),
+    );
   }
 }

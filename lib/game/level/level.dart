@@ -82,9 +82,15 @@ class Level extends Component with HasGameRef<SimplePlatformer> {
           break;
 
         case 'Enemy':
+          // Find the target object.
+          final targetObjectId = int.parse(spawnPoint.properties.first.value);
+          final target = spawnPointsLayer.objects
+              .firstWhere((object) => object.id == targetObjectId);
+
           final enemy = Enemy(
             gameRef.spriteSheet,
             position: position,
+            targetPosition: Vector2(target.x, target.y),
             size: size,
           );
           add(enemy);
