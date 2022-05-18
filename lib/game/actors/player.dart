@@ -131,7 +131,7 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
     super.onCollision(intersectionPoints, other);
   }
 
-  // This method runs an opacity effect on player 
+  // This method runs an opacity effect on player
   // to make it blink.
   void hit() {
     add(
