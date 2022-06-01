@@ -2,6 +2,8 @@ import 'package:flame/game.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/extensions.dart';
 import 'package:flame/input.dart';
+import 'package:flame_simple_platformer/game/hud/hud.dart';
+import 'package:flame_simple_platformer/game/model/player_data.dart';
 
 import 'level/level.dart';
 
@@ -13,6 +15,8 @@ class SimplePlatformer extends FlameGame
 
   // Reference to common spritesheet
   late Image spriteSheet;
+
+  final playerData = PlayerData();
 
   @override
   Future<void>? onLoad() async {
@@ -27,6 +31,8 @@ class SimplePlatformer extends FlameGame
     );
 
     loadLevel('Level1.tmx');
+
+    add(Hud(priority: 1));
 
     return super.onLoad();
   }
