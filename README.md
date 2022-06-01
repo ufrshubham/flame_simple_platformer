@@ -50,6 +50,8 @@ $ flutter run
 
 - [Enemy movement and collision](https://github.com/ufrshubham/flame_simple_platformer/tree/08953150b7d086c9b8c7f5d2280653fa2b8f1ba3)
 
+- [Hud, score and health](https://github.com/ufrshubham/flame_simple_platformer/tree/cb91ec6a0f8bd7b6562559f506c5dff13de1e8ae)
+
 ## License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
