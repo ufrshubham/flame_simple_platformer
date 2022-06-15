@@ -57,9 +57,10 @@ class Coin extends SpriteComponent
       add(
         OpacityEffect.fadeOut(
           LinearEffectController(0.3),
-        )..onFinishCallback = () {
+          onComplete: () {
             add(RemoveEffect());
           },
+        ),
       );
 
       gameRef.playerData.score.value += 1;
