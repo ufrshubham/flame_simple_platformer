@@ -144,4 +144,9 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
       ),
     );
   }
+
+  void jump() {
+    _jumpInput = true;
+    _isOnGround = true;
+  }
 }
