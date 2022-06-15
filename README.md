@@ -52,6 +52,10 @@ $ flutter run
 
 - [Hud, score and health](https://github.com/ufrshubham/flame_simple_platformer/tree/cb91ec6a0f8bd7b6562559f506c5dff13de1e8ae)
 
+- [Version-up Flame 1.2.0](https://github.com/ufrshubham/flame_simple_platformer/tree/50d12ab195a155e25a053e0266c0cfaebace8d53)
+
+- [Attack enemies](https://github.com/ufrshubham/flame_simple_platformer/tree/ce61aa57594aeb1f57d6a0a19c8e6f72efda2136)
+
 ## License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
