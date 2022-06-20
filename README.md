@@ -44,6 +44,18 @@ $ flutter run
 
 - [Interactable doors](https://github.com/ufrshubham/flame_simple_platformer/tree/a0230e923b0e0b6186494c234397df445675287c)
 
+- [Version-up Flame 1.1.1](https://github.com/ufrshubham/flame_simple_platformer/tree/cc1b046d103d02187e7b7601fd91715650a36f9d)
+
+- [Coins and effects](https://github.com/ufrshubham/flame_simple_platformer/tree/76d181e7fac6a85e7b2aca65cd9376dfb855a706)
+
+- [Enemy movement and collision](https://github.com/ufrshubham/flame_simple_platformer/tree/08953150b7d086c9b8c7f5d2280653fa2b8f1ba3)
+
+- [Hud, score and health](https://github.com/ufrshubham/flame_simple_platformer/tree/cb91ec6a0f8bd7b6562559f506c5dff13de1e8ae)
+
+- [Version-up Flame 1.2.0](https://github.com/ufrshubham/flame_simple_platformer/tree/50d12ab195a155e25a053e0266c0cfaebace8d53)
+
+- [Attack enemies](https://github.com/ufrshubham/flame_simple_platformer/tree/ce61aa57594aeb1f57d6a0a19c8e6f72efda2136)
+
 ## License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.

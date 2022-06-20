@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="30" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="45">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="30" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="47">
  <tileset firstgid="1" source="Spritesheet.tsx"/>
  <layer id="1" name="Tile Layer 1" width="30" height="12">
   <data encoding="base64">
@@ -25,12 +25,26 @@
   <object id="34" type="Coin" gid="4" x="832" y="96" width="32" height="32"/>
   <object id="35" type="Coin" gid="4" x="896" y="160" width="32" height="32"/>
   <object id="36" type="Coin" gid="4" x="896" y="224" width="32" height="32"/>
-  <object id="37" type="Enemy" gid="2" x="608" y="128" width="32" height="32"/>
-  <object id="38" type="Enemy" gid="2" x="128" y="320" width="32" height="32"/>
+  <object id="37" type="Enemy" gid="2" x="608" y="128" width="32" height="32">
+   <properties>
+    <property name="Target" type="object" value="46"/>
+   </properties>
+  </object>
+  <object id="38" type="Enemy" gid="2" x="96" y="320" width="32" height="32">
+   <properties>
+    <property name="Target" type="object" value="45"/>
+   </properties>
+  </object>
   <object id="39" type="Door" gid="3" x="896" y="320" width="64" height="64">
    <properties>
     <property name="NextLevel" value="Level1.tmx"/>
    </properties>
+  </object>
+  <object id="45" x="576" y="288">
+   <point/>
+  </object>
+  <object id="46" x="736" y="96">
+   <point/>
   </object>
  </objectgroup>
 </map>

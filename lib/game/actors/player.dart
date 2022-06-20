@@ -1,5 +1,6 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flame/image_composition.dart';
 import 'package:flame_simple_platformer/game/actors/platform.dart';
 import 'package:flame_simple_platformer/game/game.dart';
@@ -13,7 +14,7 @@ class Player extends SpriteComponent
   bool _isOnGround = false;
 
   final double _gravity = 10;
-  final double _jumpSpeed = 320;
+  final double _jumpSpeed = 360;
   final double _moveSpeed = 200;
 
   final Vector2 _up = Vector2(0, -1);
@@ -140,13 +141,32 @@ class Player extends SpriteComponent
     super.onCollision(intersectionPoints, other);
   }
 
+  // This method runs an opacity effect on player
+  // to make it blink.
+  void hit() {
+    add(
+      OpacityEffect.fadeOut(
+        EffectController(
+          alternate: true,
+          duration: 0.1,
+          repeatCount: 5,
+        ),
+      ),
+    );
+  }
+
+  void airHop() {
+    _jumpInput = true;
+    _isOnGround = true;
+  }
+
   // Setter for horizontal input.
   set hAxisInput(int value) {
     _hAxisInput = value;
   }
 
   // Setter for jump input.
-  set jump(bool jump) {
-    _jumpInput = jump;
+  set jump(bool value) {
+    _jumpInput = value;
   }
 }
