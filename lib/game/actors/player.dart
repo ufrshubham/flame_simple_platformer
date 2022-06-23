@@ -145,6 +145,7 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
     );
   }
 
+  // Makes the player jump forcefully.
   void jump() {
     _jumpInput = true;
     _isOnGround = true;

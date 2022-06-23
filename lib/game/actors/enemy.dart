@@ -65,7 +65,9 @@ class Enemy extends SpriteComponent
     if (other is Player) {
       final playerDir = (other.absoluteCenter - absoluteCenter).normalized();
 
+      // Checks if player is hitting this enemy from the top.
       if (playerDir.dot(_up) > 0.85) {
+        // Fade out and remove this enemy and make the player auto-jump.
         add(
           OpacityEffect.fadeOut(
             LinearEffectController(0.2),
@@ -74,6 +76,7 @@ class Enemy extends SpriteComponent
         );
         other.jump();
       } else {
+        // Run hit effect on player and reduce the health.
         other.hit();
         if (gameRef.playerData.health.value > 0) {
           gameRef.playerData.health.value -= 1;
