@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
 import 'game/game.dart';
+import 'game/overlays/game_over.dart';
+import 'game/overlays/main_menu.dart';
+import 'game/overlays/pause_menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,8 +27,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        body: GameWidget(
+        body: GameWidget<SimplePlatformer>(
           game: kDebugMode ? SimplePlatformer() : _game,
+          overlayBuilderMap: {
+            MainMenu.id: (context, game) => MainMenu(gameRef: game),
+            PauseMenu.id: (context, game) => PauseMenu(gameRef: game),
+            GameOver.id: (context, game) => GameOver(gameRef: game),
+          },
+          initialActiveOverlays: const [MainMenu.id],
         ),
       ),
     );

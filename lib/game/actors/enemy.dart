@@ -2,8 +2,9 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/image_composition.dart';
-import 'package:flame_simple_platformer/game/actors/player.dart';
-import 'package:flame_simple_platformer/game/game.dart';
+
+import '../game.dart';
+import 'player.dart';
 
 // Represents an enemy in the game world.
 class Enemy extends SpriteComponent

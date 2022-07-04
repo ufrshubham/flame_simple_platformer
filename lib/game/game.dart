@@ -2,17 +2,12 @@ import 'package:flame/game.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/extensions.dart';
 import 'package:flame/input.dart';
-import 'package:flame_simple_platformer/game/hud/hud.dart';
-import 'package:flame_simple_platformer/game/model/player_data.dart';
 
-import 'level/level.dart';
+import 'model/player_data.dart';
 
 // Represents the game world
 class SimplePlatformer extends FlameGame
-    with HasCollisionDetection, HasKeyboardHandlerComponents {
-  // Currently active level
-  Level? _currentLevel;
-
+    with HasCollisionDetection, HasKeyboardHandlerComponents, HasTappables {
   // Reference to common spritesheet
   late Image spriteSheet;
 
@@ -30,17 +25,6 @@ class SimplePlatformer extends FlameGame
       Vector2(640, 330),
     );
 
-    loadLevel('Level1.tmx');
-
-    add(Hud(priority: 1));
-
     return super.onLoad();
-  }
-
-  // Swaps current level with given level
-  void loadLevel(String levelName) {
-    _currentLevel?.removeFromParent();
-    _currentLevel = Level(levelName);
-    add(_currentLevel!);
   }
 }

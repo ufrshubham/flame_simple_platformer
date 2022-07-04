@@ -2,8 +2,9 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/image_composition.dart';
-import 'package:flame_simple_platformer/game/actors/platform.dart';
 import 'package:flutter/services.dart';
+
+import 'platform.dart';
 
 // Represents a player in the game world.
 class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {

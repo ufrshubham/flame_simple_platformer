@@ -9,9 +9,11 @@ import '../actors/door.dart';
 import '../actors/enemy.dart';
 import '../actors/player.dart';
 import '../actors/platform.dart';
+import '../game_play.dart';
 
-// Represents a level in game.
-class Level extends Component with HasGameRef<SimplePlatformer> {
+// Represents a level in game. Should only be added as child of GamePlay
+class Level extends Component
+    with HasGameRef<SimplePlatformer>, ParentIsA<GamePlay> {
   final String levelName;
   late Player _player;
   late Rect _levelBounds;
@@ -103,7 +105,7 @@ class Level extends Component with HasGameRef<SimplePlatformer> {
             position: position,
             size: size,
             onPlayerEnter: () {
-              gameRef.loadLevel(spawnPoint.properties.first.value);
+              parent.loadLevel(spawnPoint.properties.first.value);
             },
           );
           add(door);
