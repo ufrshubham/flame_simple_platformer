@@ -1,5 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
+import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 
 import '../game.dart';
 import '../overlays/game_over.dart';
@@ -43,6 +44,7 @@ class Hud extends Component with HasGameRef<SimplePlatformer> {
 
     final pauseButton = SpriteButtonComponent(
       onPressed: () {
+        AudioManager.pauseBgm();
         gameRef.pauseEngine();
         gameRef.overlays.add(PauseMenu.id);
       },
@@ -78,6 +80,7 @@ class Hud extends Component with HasGameRef<SimplePlatformer> {
 
     // Load game over overlay if health is zero.
     if (gameRef.playerData.health.value == 0) {
+      AudioManager.stopBgm();
       gameRef.pauseEngine();
       gameRef.overlays.add(GameOver.id);
     }

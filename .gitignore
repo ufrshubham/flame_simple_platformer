@@ -54,3 +54,10 @@ web/
 
 # Unused
 test/
+
+# Audio files
+assets/audio/Blop_1.wav
+assets/audio/Collectibles_6.wav
+assets/audio/Hit_2.wav
+assets/audio/Jump_15.wav
+assets/audio/Winning_Sight.wav

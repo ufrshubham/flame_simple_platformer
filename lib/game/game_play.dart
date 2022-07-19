@@ -1,4 +1,5 @@
 import 'package:flame/components.dart';
+import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 
 import 'game.dart';
 import 'hud/hud.dart';
@@ -13,6 +14,8 @@ class GamePlay extends Component with HasGameRef<SimplePlatformer> {
 
   @override
   Future<void>? onLoad() {
+    AudioManager.playBgm('Winning_Sight.wav');
+
     loadLevel('Level1.tmx');
     gameRef.add(hud);
     gameRef.playerData.score.value = 0;

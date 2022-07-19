@@ -2,6 +2,7 @@ import 'package:flame/game.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/extensions.dart';
 import 'package:flame/input.dart';
+import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 
 import 'model/player_data.dart';
 
@@ -18,6 +19,9 @@ class SimplePlatformer extends FlameGame
     // Device setup
     await Flame.device.fullScreen();
     await Flame.device.setLandscape();
+
+    // Loads all the audio assets
+    await AudioManager.init();
 
     spriteSheet = await images.load('Spritesheet.png');
 

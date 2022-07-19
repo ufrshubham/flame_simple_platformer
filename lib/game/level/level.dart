@@ -60,7 +60,7 @@ class Level extends Component
       final position = Vector2(spawnPoint.x, spawnPoint.y - spawnPoint.height);
       final size = Vector2(spawnPoint.width, spawnPoint.height);
 
-      switch (spawnPoint.type) {
+      switch (spawnPoint.class_) {
         case 'Player':
           _player = Player(
             gameRef.spriteSheet,

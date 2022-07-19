@@ -2,6 +2,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/image_composition.dart';
+import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 import 'package:flutter/services.dart';
 
 import 'platform.dart';
@@ -68,6 +69,7 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
     // and player is already on ground.
     if (_jumpInput) {
       if (_isOnGround) {
+        AudioManager.playSfx('Jump_15.wav');
         _velocity.y = -_jumpSpeed;
         _isOnGround = false;
       }

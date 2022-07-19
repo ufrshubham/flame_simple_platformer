@@ -1,3 +1,4 @@
+import 'package:flame_simple_platformer/game/overlays/settings.dart';
 import 'package:flutter/material.dart';
 
 import '../game.dart';
@@ -30,7 +31,10 @@ class MainMenu extends StatelessWidget {
             SizedBox(
               width: 100,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  gameRef.overlays.remove(id);
+                  gameRef.overlays.add(Settings.id);
+                },
                 child: const Text('Settings'),
               ),
             )
