@@ -58,6 +58,8 @@ $ flutter run
 
 - [Adding menus using Overlay](https://github.com/ufrshubham/flame_simple_platformer/tree/cba665f9c11819f7d7af46ea3d88b8a5fb3dff78)
 
+- [Sound effects and background music](https://github.com/ufrshubham/flame_simple_platformer/tree/37b00bab2dab2b38579d6e3571a7d515acd29f17)
+
 ## License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
