@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="25">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="25">
  <tileset firstgid="1" source="Spritesheet.tsx"/>
  <layer id="1" name="Tile Layer 1" width="20" height="12">
   <data encoding="base64">
@@ -7,13 +7,13 @@
   </data>
  </layer>
  <objectgroup id="3" name="SpawnPoints">
-  <object id="15" type="Player" gid="1" x="32" y="320" width="32" height="32"/>
-  <object id="16" type="Coin" gid="4" x="192" y="256" width="32" height="32"/>
-  <object id="17" type="Coin" gid="4" x="288" y="256" width="32" height="32"/>
-  <object id="18" type="Coin" gid="4" x="352" y="160" width="32" height="32"/>
-  <object id="19" type="Coin" gid="4" x="448" y="192" width="32" height="32"/>
-  <object id="20" type="Coin" gid="4" x="512" y="192" width="32" height="32"/>
-  <object id="21" type="Door" gid="3" x="576" y="192" width="64" height="64">
+  <object id="15" class="Player" gid="1" x="32" y="320" width="32" height="32"/>
+  <object id="16" class="Coin" gid="4" x="192" y="256" width="32" height="32"/>
+  <object id="17" class="Coin" gid="4" x="288" y="256" width="32" height="32"/>
+  <object id="18" class="Coin" gid="4" x="352" y="160" width="32" height="32"/>
+  <object id="19" class="Coin" gid="4" x="448" y="192" width="32" height="32"/>
+  <object id="20" class="Coin" gid="4" x="512" y="192" width="32" height="32"/>
+  <object id="21" class="Door" gid="3" x="576" y="192" width="64" height="64">
    <properties>
     <property name="NextLevel" value="Level2.tmx"/>
    </properties>

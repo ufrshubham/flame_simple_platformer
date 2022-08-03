@@ -2,9 +2,11 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/image_composition.dart';
-import 'package:flame_simple_platformer/game/actors/platform.dart';
-import 'package:flame_simple_platformer/game/game.dart';
 import 'package:flutter/services.dart';
+
+import '../game.dart';
+import '../utils/audio_manager.dart';
+import 'platform.dart';
 
 // Represents a player in the game world.
 class Player extends SpriteComponent
@@ -77,6 +79,7 @@ class Player extends SpriteComponent
     // and player is already on ground.
     if (_jumpInput) {
       if (_isOnGround) {
+        AudioManager.playSfx('Jump_15.wav');
         _velocity.y = -_jumpSpeed;
         _isOnGround = false;
       }
@@ -155,6 +158,7 @@ class Player extends SpriteComponent
     );
   }
 
+  // Makes the player jump forcefully.
   void airHop() {
     _jumpInput = true;
     _isOnGround = true;
