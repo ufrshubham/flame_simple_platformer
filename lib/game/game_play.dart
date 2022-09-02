@@ -17,7 +17,7 @@ class GamePlay extends Component with HasGameRef<SimplePlatformer> {
     AudioManager.playBgm('Winning_Sight.wav');
 
     loadLevel('Level1.tmx');
-    gameRef.add(hud);
+    gameRef.worldCam.viewport.add(hud);
     gameRef.playerData.score.value = 0;
     gameRef.playerData.health.value = 5;
 
@@ -26,7 +26,7 @@ class GamePlay extends Component with HasGameRef<SimplePlatformer> {
 
   @override
   void onRemove() {
-    gameRef.remove(hud);
+    gameRef.worldCam.viewport.remove(hud);
     super.onRemove();
   }
 

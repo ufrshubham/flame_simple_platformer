@@ -6,26 +6,29 @@ import 'package:flutter/material.dart';
 class AudioManager {
   static final sfx = ValueNotifier(true);
   static final bgm = ValueNotifier(true);
+  static bool play = false;
 
   static Future<void> init() async {
     FlameAudio.bgm.initialize();
-    await FlameAudio.audioCache.loadAll([
-      'Blop_1.wav',
-      'Collectibles_6.wav',
-      'Hit_2.wav',
-      'Jump_15.wav',
-      'Winning_Sight.wav',
-    ]);
+    try {
+      await FlameAudio.audioCache.loadAll([
+        'Blop_1.wav',
+        'Collectibles_6.wav',
+        'Hit_2.wav',
+        'Jump_15.wav',
+        'Winning_Sight.wav',
+      ]);
+    } catch (_) {}
   }
 
   static void playSfx(String file) {
-    if (sfx.value) {
+    if (sfx.value && play) {
       FlameAudio.play(file);
     }
   }
 
   static void playBgm(String file) {
-    if (bgm.value) {
+    if (bgm.value && play) {
       FlameAudio.bgm.play(file);
     }
   }
@@ -35,7 +38,7 @@ class AudioManager {
   }
 
   static void resumeBgm() {
-    if (bgm.value) {
+    if (bgm.value && play) {
       FlameAudio.bgm.resume();
     }
   }

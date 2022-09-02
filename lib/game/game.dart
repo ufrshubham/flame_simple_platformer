@@ -1,3 +1,4 @@
+import 'package:flame/experimental.dart';
 import 'package:flame/game.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/extensions.dart';
@@ -14,6 +15,10 @@ class SimplePlatformer extends FlameGame
 
   final playerData = PlayerData();
 
+  final world = World();
+  late final worldCam =
+      CameraComponent(world: world, viewport: FixedSizeViewport(640, 330));
+
   @override
   Future<void>? onLoad() async {
     // Device setup
@@ -25,9 +30,8 @@ class SimplePlatformer extends FlameGame
 
     spriteSheet = await images.load('Spritesheet.png');
 
-    camera.viewport = FixedResolutionViewport(
-      Vector2(640, 330),
-    );
+    add(world);
+    add(worldCam);
 
     return super.onLoad();
   }

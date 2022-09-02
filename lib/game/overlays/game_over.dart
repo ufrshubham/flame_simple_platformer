@@ -24,8 +24,8 @@ class GameOver extends StatelessWidget {
                 onPressed: () {
                   gameRef.overlays.remove(id);
                   gameRef.resumeEngine();
-                  gameRef.removeAll(gameRef.children);
-                  gameRef.add(GamePlay());
+                  gameRef.world.removeAll(gameRef.world.children);
+                  gameRef.world.add(GamePlay());
                 },
                 child: const Text('Restart'),
               ),
@@ -36,7 +36,7 @@ class GameOver extends StatelessWidget {
                 onPressed: () {
                   gameRef.overlays.remove(id);
                   gameRef.resumeEngine();
-                  gameRef.removeAll(gameRef.children);
+                  gameRef.world.removeAll(gameRef.world.children);
                   gameRef.overlays.add(MainMenu.id);
                 },
                 child: const Text('Exit'),

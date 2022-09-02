@@ -1,5 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
+import 'package:flame_simple_platformer/game/camera_extension.dart';
 import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 
 import '../game.dart';
@@ -81,6 +82,7 @@ class Hud extends Component with HasGameRef<SimplePlatformer> {
     // Load game over overlay if health is zero.
     if (gameRef.playerData.health.value == 0) {
       AudioManager.stopBgm();
+      gameRef.worldCam.stopShaking();
       gameRef.pauseEngine();
       gameRef.overlays.add(GameOver.id);
     }

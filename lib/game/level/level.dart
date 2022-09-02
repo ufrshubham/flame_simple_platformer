@@ -1,4 +1,5 @@
 import 'package:flame/components.dart';
+import 'package:flame/experimental.dart';
 import 'package:flame/extensions.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:tiled/tiled.dart';
@@ -120,7 +121,7 @@ class Level extends Component
   // the camera within level bounds.
   /// NOTE: Call only after [_spawnActors].
   void _setupCamera() {
-    gameRef.camera.followComponent(_player);
-    gameRef.camera.worldBounds = _levelBounds;
+    gameRef.worldCam.follow(_player);
+    gameRef.worldCam.setBounds(Rectangle.fromRect(_levelBounds));
   }
 }

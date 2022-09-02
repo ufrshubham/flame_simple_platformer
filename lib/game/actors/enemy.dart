@@ -2,6 +2,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/image_composition.dart';
+import 'package:flame_simple_platformer/game/camera_extension.dart';
 import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 
 import '../game.dart';
@@ -81,6 +82,7 @@ class Enemy extends SpriteComponent
         AudioManager.playSfx('Hit_2.wav');
         // Run hit effect on player and reduce the health.
         other.hit();
+        gameRef.worldCam.shake();
         if (gameRef.playerData.health.value > 0) {
           gameRef.playerData.health.value -= 1;
         }
