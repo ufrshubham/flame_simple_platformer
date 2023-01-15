@@ -15,19 +15,19 @@ class Hud extends Component with HasGameRef<SimplePlatformer> {
   }
 
   @override
-  Future<void>? onLoad() {
+  Future<void> onLoad() async {
     scoreTextComponent = TextComponent(
       text: 'Score: 0',
       position: Vector2.all(10),
     );
-    add(scoreTextComponent);
+    await add(scoreTextComponent);
 
     healthTextComponent = TextComponent(
       text: 'x5',
       anchor: Anchor.topRight,
       position: Vector2(gameRef.size.x - 10, 10),
     );
-    add(healthTextComponent);
+    await add(healthTextComponent);
 
     final playerSprite = SpriteComponent.fromImage(
       gameRef.spriteSheet,
@@ -37,7 +37,7 @@ class Hud extends Component with HasGameRef<SimplePlatformer> {
       position: Vector2(
           healthTextComponent.position.x - healthTextComponent.size.x - 5, 5),
     );
-    add(playerSprite);
+    await add(playerSprite);
 
     gameRef.playerData.score.addListener(onScoreChange);
     gameRef.playerData.health.addListener(onHealthChange);
@@ -57,9 +57,7 @@ class Hud extends Component with HasGameRef<SimplePlatformer> {
       anchor: Anchor.topCenter,
       position: Vector2(gameRef.size.x / 2, 5),
     )..positionType = PositionType.viewport;
-    add(pauseButton);
-
-    return super.onLoad();
+    await add(pauseButton);
   }
 
   @override

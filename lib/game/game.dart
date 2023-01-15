@@ -15,7 +15,7 @@ class SimplePlatformer extends FlameGame
   final playerData = PlayerData();
 
   @override
-  Future<void>? onLoad() async {
+  Future<void> onLoad() async {
     // Device setup
     await Flame.device.fullScreen();
     await Flame.device.setLandscape();
@@ -28,7 +28,5 @@ class SimplePlatformer extends FlameGame
     camera.viewport = FixedResolutionViewport(
       Vector2(640, 330),
     );
-
-    return super.onLoad();
   }
 }

@@ -53,9 +53,8 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
   }
 
   @override
-  Future<void>? onLoad() {
-    add(CircleHitbox());
-    return super.onLoad();
+  Future<void> onLoad() async {
+    await add(CircleHitbox());
   }
 
   @override

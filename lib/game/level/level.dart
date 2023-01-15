@@ -20,12 +20,12 @@ class Level extends Component
   Level(this.levelName) : super();
 
   @override
-  Future<void>? onLoad() async {
+  Future<void> onLoad() async {
     final level = await TiledComponent.load(
       levelName,
       Vector2.all(32),
     );
-    add(level);
+    await add(level);
 
     _levelBounds = Rect.fromLTWH(
       0,
@@ -36,8 +36,6 @@ class Level extends Component
 
     _spawnActors(level.tileMap);
     _setupCamera();
-
-    return super.onLoad();
   }
 
   // This method takes care of spawning

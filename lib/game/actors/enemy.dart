@@ -56,9 +56,8 @@ class Enemy extends SpriteComponent
   }
 
   @override
-  Future<void>? onLoad() {
-    add(CircleHitbox()..collisionType = CollisionType.passive);
-    return super.onLoad();
+  Future<void> onLoad() async {
+    await add(CircleHitbox()..collisionType = CollisionType.passive);
   }
 
   @override
