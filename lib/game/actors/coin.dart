@@ -32,11 +32,11 @@ class Coin extends SpriteComponent
         );
 
   @override
-  Future<void>? onLoad() {
-    add(CircleHitbox()..collisionType = CollisionType.passive);
+  Future<void> onLoad() async {
+    await add(CircleHitbox()..collisionType = CollisionType.passive);
 
     // Keeps the coin bouncing
-    add(
+    await add(
       MoveEffect.by(
         Vector2(0, -4),
         EffectController(
@@ -47,8 +47,6 @@ class Coin extends SpriteComponent
         ),
       ),
     );
-
-    return super.onLoad();
   }
 
   @override

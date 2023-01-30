@@ -19,10 +19,9 @@ class Platform extends PositionComponent with CollisionCallbacks {
         );
 
   @override
-  Future<void>? onLoad() {
+  Future<void> onLoad() async {
     // Passive, because we don't want platforms to
     // collide with each other.
-    add(RectangleHitbox()..collisionType = CollisionType.passive);
-    return super.onLoad();
+    await add(RectangleHitbox()..collisionType = CollisionType.passive);
   }
 }

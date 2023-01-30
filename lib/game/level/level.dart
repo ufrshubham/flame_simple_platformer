@@ -85,7 +85,7 @@ class Level extends Component
 
         case 'Enemy':
           // Find the target object.
-          final targetObjectId = int.parse(spawnPoint.properties.first.value);
+          final targetObjectId = spawnPoint.properties.getValue<int>('Target');
           final target = spawnPointsLayer.objects
               .firstWhere((object) => object.id == targetObjectId);
 
@@ -105,7 +105,9 @@ class Level extends Component
             position: position,
             size: size,
             onPlayerEnter: () {
-              parent.loadLevel(spawnPoint.properties.first.value);
+              parent.loadLevel(
+                spawnPoint.properties.getValue<String>('NextLevel')!,
+              );
             },
           );
           add(door);

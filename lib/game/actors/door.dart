@@ -31,9 +31,8 @@ class Door extends SpriteComponent with CollisionCallbacks {
         );
 
   @override
-  Future<void>? onLoad() {
-    add(RectangleHitbox()..collisionType = CollisionType.passive);
-    return super.onLoad();
+  Future<void> onLoad() async {
+    await add(RectangleHitbox()..collisionType = CollisionType.passive);
   }
 
   @override

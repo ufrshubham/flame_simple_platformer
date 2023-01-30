@@ -55,9 +55,8 @@ class Player extends SpriteComponent
   }
 
   @override
-  Future<void>? onLoad() {
-    add(CircleHitbox());
-    return super.onLoad();
+  Future<void> onLoad() async {
+    await add(CircleHitbox());
   }
 
   @override
