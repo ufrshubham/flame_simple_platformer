@@ -8,11 +8,12 @@ import 'model/player_data.dart';
 
 // Represents the game world
 class SimplePlatformer extends FlameGame
-    with HasCollisionDetection, HasKeyboardHandlerComponents, HasTappables {
+    with HasCollisionDetection, HasKeyboardHandlerComponents {
   // Reference to common spritesheet
   late Image spriteSheet;
 
   final playerData = PlayerData();
+  final fixedResolution = Vector2(640, 330);
 
   @override
   Future<void> onLoad() async {
@@ -22,11 +23,6 @@ class SimplePlatformer extends FlameGame
 
     // Loads all the audio assets
     await AudioManager.init();
-
     spriteSheet = await images.load('Spritesheet.png');
-
-    camera.viewport = FixedResolutionViewport(
-      Vector2(640, 330),
-    );
   }
 }

@@ -6,9 +6,9 @@ import 'main_menu.dart';
 
 class PauseMenu extends StatelessWidget {
   static const id = 'PauseMenu';
-  final SimplePlatformer gameRef;
+  final SimplePlatformer game;
 
-  const PauseMenu({super.key, required this.gameRef});
+  const PauseMenu({super.key, required this.game});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +23,8 @@ class PauseMenu extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   AudioManager.resumeBgm();
-                  gameRef.overlays.remove(id);
-                  gameRef.resumeEngine();
+                  game.overlays.remove(id);
+                  game.resumeEngine();
                 },
                 child: const Text('Resume'),
               ),
@@ -33,10 +33,10 @@ class PauseMenu extends StatelessWidget {
               width: 100,
               child: ElevatedButton(
                 onPressed: () {
-                  gameRef.overlays.remove(id);
-                  gameRef.resumeEngine();
-                  gameRef.removeAll(gameRef.children);
-                  gameRef.overlays.add(MainMenu.id);
+                  game.overlays.remove(id);
+                  game.resumeEngine();
+                  game.removeAll(game.children);
+                  game.overlays.add(MainMenu.id);
                 },
                 child: const Text('Exit'),
               ),

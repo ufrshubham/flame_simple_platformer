@@ -6,9 +6,9 @@ import '../game_play.dart';
 
 class MainMenu extends StatelessWidget {
   static const id = 'MainMenu';
-  final SimplePlatformer gameRef;
+  final SimplePlatformer game;
 
-  const MainMenu({super.key, required this.gameRef});
+  const MainMenu({super.key, required this.game});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,8 @@ class MainMenu extends StatelessWidget {
               width: 100,
               child: ElevatedButton(
                 onPressed: () {
-                  gameRef.overlays.remove(id);
-                  gameRef.add(GamePlay());
+                  game.overlays.remove(id);
+                  game.add(GamePlay());
                 },
                 child: const Text('Play'),
               ),
@@ -32,8 +32,8 @@ class MainMenu extends StatelessWidget {
               width: 100,
               child: ElevatedButton(
                 onPressed: () {
-                  gameRef.overlays.remove(id);
-                  gameRef.overlays.add(Settings.id);
+                  game.overlays.remove(id);
+                  game.overlays.add(Settings.id);
                 },
                 child: const Text('Settings'),
               ),

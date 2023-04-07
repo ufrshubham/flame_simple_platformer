@@ -6,9 +6,9 @@ import '../game.dart';
 
 class Settings extends StatelessWidget {
   static const id = 'Settings';
-  final SimplePlatformer gameRef;
+  final SimplePlatformer game;
 
-  const Settings({super.key, required this.gameRef});
+  const Settings({super.key, required this.game});
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +44,8 @@ class Settings extends StatelessWidget {
               width: 100,
               child: ElevatedButton(
                 onPressed: () {
-                  gameRef.overlays.remove(id);
-                  gameRef.overlays.add(MainMenu.id);
+                  game.overlays.remove(id);
+                  game.overlays.add(MainMenu.id);
                 },
                 child: const Text('Back'),
               ),

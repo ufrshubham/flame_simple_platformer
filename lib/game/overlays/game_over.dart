@@ -6,9 +6,9 @@ import 'main_menu.dart';
 
 class GameOver extends StatelessWidget {
   static const id = 'GameOver';
-  final SimplePlatformer gameRef;
+  final SimplePlatformer game;
 
-  const GameOver({super.key, required this.gameRef});
+  const GameOver({super.key, required this.game});
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +22,10 @@ class GameOver extends StatelessWidget {
               width: 100,
               child: ElevatedButton(
                 onPressed: () {
-                  gameRef.overlays.remove(id);
-                  gameRef.resumeEngine();
-                  gameRef.removeAll(gameRef.children);
-                  gameRef.add(GamePlay());
+                  game.overlays.remove(id);
+                  game.resumeEngine();
+                  game.removeAll(game.children);
+                  game.add(GamePlay());
                 },
                 child: const Text('Restart'),
               ),
@@ -34,10 +34,10 @@ class GameOver extends StatelessWidget {
               width: 100,
               child: ElevatedButton(
                 onPressed: () {
-                  gameRef.overlays.remove(id);
-                  gameRef.resumeEngine();
-                  gameRef.removeAll(gameRef.children);
-                  gameRef.overlays.add(MainMenu.id);
+                  game.overlays.remove(id);
+                  game.resumeEngine();
+                  game.removeAll(game.children);
+                  game.overlays.add(MainMenu.id);
                 },
                 child: const Text('Exit'),
               ),

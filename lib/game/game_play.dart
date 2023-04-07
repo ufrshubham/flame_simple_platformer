@@ -1,4 +1,4 @@
-import 'package:flame/components.dart';
+import 'package:flame/experimental.dart';
 import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 
 import 'game.dart';
@@ -6,25 +6,34 @@ import 'hud/hud.dart';
 import 'level/level.dart';
 
 // This component is responsible for the whole game play.
-class GamePlay extends Component with HasGameRef<SimplePlatformer> {
+class GamePlay extends World with HasGameReference<SimplePlatformer> {
   // Currently active level
   Level? _currentLevel;
 
   final hud = Hud(priority: 1);
+  late CameraComponent camera;
 
   @override
-  void onLoad() {
+  Future<void> onLoad() async {
     AudioManager.playBgm('Winning_Sight.wav');
 
+    camera = CameraComponent.withFixedResolution(
+      world: this,
+      width: game.fixedResolution.x,
+      height: game.fixedResolution.y,
+      hudComponents: [hud],
+    );
+    camera.viewfinder.position = game.fixedResolution / 2;
+    await game.add(camera);
+
     loadLevel('Level1.tmx');
-    gameRef.add(hud);
-    gameRef.playerData.score.value = 0;
-    gameRef.playerData.health.value = 5;
+    game.playerData.score.value = 0;
+    game.playerData.health.value = 5;
   }
 
   @override
   void onRemove() {
-    gameRef.remove(hud);
+    hud.removeFromParent();
     super.onRemove();
   }
 

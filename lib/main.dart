@@ -29,10 +29,10 @@ class MyApp extends StatelessWidget {
         body: GameWidget<SimplePlatformer>(
           game: kDebugMode ? SimplePlatformer() : _game,
           overlayBuilderMap: {
-            MainMenu.id: (context, game) => MainMenu(gameRef: game),
-            PauseMenu.id: (context, game) => PauseMenu(gameRef: game),
-            GameOver.id: (context, game) => GameOver(gameRef: game),
-            Settings.id: (context, game) => Settings(gameRef: game),
+            MainMenu.id: (context, game) => MainMenu(game: game),
+            PauseMenu.id: (context, game) => PauseMenu(game: game),
+            GameOver.id: (context, game) => GameOver(game: game),
+            Settings.id: (context, game) => Settings(game: game),
           },
           initialActiveOverlays: const [MainMenu.id],
         ),

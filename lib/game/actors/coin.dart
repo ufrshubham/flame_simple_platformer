@@ -1,6 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
+import 'package:flame/experimental.dart';
 import 'package:flame/image_composition.dart';
 import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 import 'package:flutter/animation.dart';
@@ -10,7 +11,7 @@ import 'player.dart';
 
 // Represents a collectable coin in the game world.
 class Coin extends SpriteComponent
-    with CollisionCallbacks, HasGameRef<SimplePlatformer> {
+    with CollisionCallbacks, HasGameReference<SimplePlatformer> {
   Coin(
     Image image, {
     Vector2? position,
@@ -65,7 +66,7 @@ class Coin extends SpriteComponent
         ),
       );
 
-      gameRef.playerData.score.value += 1;
+      game.playerData.score.value += 1;
     }
     super.onCollisionStart(intersectionPoints, other);
   }
