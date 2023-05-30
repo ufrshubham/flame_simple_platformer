@@ -1,3 +1,4 @@
+import 'package:flame/camera.dart';
 import 'package:flame/experimental.dart';
 import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 
