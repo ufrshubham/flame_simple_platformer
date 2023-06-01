@@ -11,9 +11,7 @@ class Hud extends Component with HasGameReference<SimplePlatformer> {
   late final TextComponent scoreTextComponent;
   late final TextComponent healthTextComponent;
 
-  Hud({super.children, super.priority}) {
-    positionType = PositionType.viewport;
-  }
+  Hud({super.children, super.priority});
 
   @override
   Future<void> onLoad() async {
@@ -57,7 +55,7 @@ class Hud extends Component with HasGameReference<SimplePlatformer> {
       size: Vector2.all(32),
       anchor: Anchor.topCenter,
       position: Vector2(game.size.x / 2, 5),
-    )..positionType = PositionType.viewport;
+    );
     await add(pauseButton);
   }
 
