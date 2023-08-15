@@ -125,7 +125,7 @@ class Level extends Component
   // the camera within level bounds.
   /// NOTE: Call only after [_spawnActors].
   void _setupCamera(TiledComponent level) {
-    parent.camera.follow(_player);
+    parent.camera.follow(_player, maxSpeed: 200);
     parent.camera.setBounds(
       Rectangle.fromLTRB(
         game.fixedResolution.x / 2,

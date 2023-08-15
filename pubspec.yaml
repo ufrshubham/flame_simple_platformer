@@ -8,10 +8,10 @@ environment:
   sdk: ">=2.17.1 <3.0.0"
 
 dependencies:
-  flame: 1.8.1
-  flame_tiled: 1.12.0
+  flame: 1.8.2
+  flame_tiled: 1.13.0
   tiled: 0.10.1
-  flame_audio: 2.0.4
+  flame_audio: 2.0.5
   flutter:
     sdk: flutter
 
