@@ -1,6 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
+import 'package:flame/experimental.dart';
 import 'package:flame/image_composition.dart';
 import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 
@@ -9,7 +10,7 @@ import 'player.dart';
 
 // Represents an enemy in the game world.
 class Enemy extends SpriteComponent
-    with CollisionCallbacks, HasGameRef<SimplePlatformer> {
+    with CollisionCallbacks, HasGameReference<SimplePlatformer> {
   static final Vector2 _up = Vector2(0, -1);
 
   Enemy(
@@ -80,8 +81,8 @@ class Enemy extends SpriteComponent
         AudioManager.playSfx('Hit_2.wav');
         // Run hit effect on player and reduce the health.
         other.hit();
-        if (gameRef.playerData.health.value > 0) {
-          gameRef.playerData.health.value -= 1;
+        if (game.playerData.health.value > 0) {
+          game.playerData.health.value -= 1;
         }
       }
     }

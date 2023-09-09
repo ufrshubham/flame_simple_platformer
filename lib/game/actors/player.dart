@@ -2,15 +2,15 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/image_composition.dart';
+import 'package:flame_simple_platformer/game/game_play.dart';
 import 'package:flutter/services.dart';
 
-import '../game.dart';
 import '../utils/audio_manager.dart';
 import 'platform.dart';
 
 // Represents a player in the game world.
 class Player extends SpriteComponent
-    with CollisionCallbacks, KeyboardHandler, HasGameRef<SimplePlatformer> {
+    with CollisionCallbacks, KeyboardHandler, HasAncestor<GamePlay> {
   int _hAxisInput = 0;
   bool _jumpInput = false;
   bool _isOnGround = false;
@@ -22,19 +22,15 @@ class Player extends SpriteComponent
   final Vector2 _up = Vector2(0, -1);
   final Vector2 _velocity = Vector2.zero();
 
-  // Limits for clamping player.
-  late Vector2 _minClamp;
-  late Vector2 _maxClamp;
-
   Player(
     Image image, {
-    required Rect levelBounds,
     Vector2? position,
     Vector2? size,
     Vector2? scale,
     double? angle,
     Anchor? anchor,
     int? priority,
+    Iterable<Component>? children,
   }) : super.fromImage(
           image,
           srcPosition: Vector2.zero(),
@@ -45,14 +41,8 @@ class Player extends SpriteComponent
           angle: angle,
           anchor: anchor,
           priority: priority,
-        ) {
-    // Since anchor point for player is at the center,
-    // min and max clamp limits will have to be adjusted by
-    // half-size of player.
-    final halfSize = size! / 2;
-    _minClamp = levelBounds.topLeft.toVector2() + halfSize;
-    _maxClamp = levelBounds.bottomRight.toVector2() - halfSize;
-  }
+          children: children,
+        );
 
   @override
   Future<void> onLoad() async {
@@ -61,10 +51,10 @@ class Player extends SpriteComponent
 
   @override
   void onMount() {
+    super.onMount();
     // As soon as the player is mounted,
     // connect it with the on-screen controls.
-    gameRef.touchControls.connectPlayer(this);
-    super.onMount();
+    ancestor.touchControls.connectPlayer(this);
   }
 
   @override
@@ -91,9 +81,6 @@ class Player extends SpriteComponent
 
     // delta movement = velocity * time
     position += _velocity * dt;
-
-    // Keeps player within level bounds.
-    position.clamp(_minClamp, _maxClamp);
 
     // Flip player if needed.
     if (_hAxisInput < 0 && scale.x > 0) {

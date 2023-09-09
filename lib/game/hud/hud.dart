@@ -1,4 +1,5 @@
 import 'package:flame/components.dart';
+import 'package:flame/experimental.dart';
 import 'package:flame/input.dart';
 import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 
@@ -6,13 +7,11 @@ import '../game.dart';
 import '../overlays/game_over.dart';
 import '../overlays/pause_menu.dart';
 
-class Hud extends Component with HasGameRef<SimplePlatformer> {
+class Hud extends Component with HasGameReference<SimplePlatformer> {
   late final TextComponent scoreTextComponent;
   late final TextComponent healthTextComponent;
 
-  Hud({super.children, super.priority}) {
-    positionType = PositionType.viewport;
-  }
+  Hud({super.children, super.priority});
 
   @override
   Future<void> onLoad() async {
@@ -25,12 +24,12 @@ class Hud extends Component with HasGameRef<SimplePlatformer> {
     healthTextComponent = TextComponent(
       text: 'x5',
       anchor: Anchor.topRight,
-      position: Vector2(gameRef.size.x - 10, 10),
+      position: Vector2(game.size.x - 10, 10),
     );
     await add(healthTextComponent);
 
     final playerSprite = SpriteComponent.fromImage(
-      gameRef.spriteSheet,
+      game.spriteSheet,
       srcPosition: Vector2.zero(),
       srcSize: Vector2.all(32),
       anchor: Anchor.topRight,
@@ -39,48 +38,48 @@ class Hud extends Component with HasGameRef<SimplePlatformer> {
     );
     await add(playerSprite);
 
-    gameRef.playerData.score.addListener(onScoreChange);
-    gameRef.playerData.health.addListener(onHealthChange);
+    game.playerData.score.addListener(onScoreChange);
+    game.playerData.health.addListener(onHealthChange);
 
     final pauseButton = SpriteButtonComponent(
       onPressed: () {
         AudioManager.pauseBgm();
-        gameRef.pauseEngine();
-        gameRef.overlays.add(PauseMenu.id);
+        game.pauseEngine();
+        game.overlays.add(PauseMenu.id);
       },
       button: Sprite(
-        gameRef.spriteSheet,
+        game.spriteSheet,
         srcSize: Vector2.all(32),
         srcPosition: Vector2(32 * 4, 0),
       ),
       size: Vector2.all(32),
       anchor: Anchor.topCenter,
-      position: Vector2(gameRef.size.x / 2, 5),
-    )..positionType = PositionType.viewport;
+      position: Vector2(game.size.x / 2, 5),
+    );
     await add(pauseButton);
   }
 
   @override
   void onRemove() {
-    gameRef.playerData.score.removeListener(onScoreChange);
-    gameRef.playerData.health.removeListener(onHealthChange);
+    game.playerData.score.removeListener(onScoreChange);
+    game.playerData.health.removeListener(onHealthChange);
     super.onRemove();
   }
 
   // Updates score text on hud.
   void onScoreChange() {
-    scoreTextComponent.text = 'Score: ${gameRef.playerData.score.value}';
+    scoreTextComponent.text = 'Score: ${game.playerData.score.value}';
   }
 
   // Updates health text on hud.
   void onHealthChange() {
-    healthTextComponent.text = 'x${gameRef.playerData.health.value}';
+    healthTextComponent.text = 'x${game.playerData.health.value}';
 
     // Load game over overlay if health is zero.
-    if (gameRef.playerData.health.value == 0) {
+    if (game.playerData.health.value == 0) {
       AudioManager.stopBgm();
-      gameRef.pauseEngine();
-      gameRef.overlays.add(GameOver.id);
+      game.pauseEngine();
+      game.overlays.add(GameOver.id);
     }
   }
 }

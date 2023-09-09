@@ -1,7 +1,9 @@
+import 'dart:ui';
+
+import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
-import 'package:flame/extensions.dart';
+import 'package:flame/experimental.dart';
 import 'package:flame_tiled/flame_tiled.dart';
-import 'package:tiled/tiled.dart';
 
 import '../game.dart';
 import '../actors/coin.dart';
@@ -13,37 +15,28 @@ import '../game_play.dart';
 
 // Represents a level in game. Should only be added as child of GamePlay
 class Level extends Component
-    with HasGameRef<SimplePlatformer>, ParentIsA<GamePlay> {
+    with HasGameReference<SimplePlatformer>, ParentIsA<GamePlay> {
   final String levelName;
   late Player _player;
-  late Rect _levelBounds;
 
   Level(this.levelName) : super();
 
   @override
-  Future<void>? onLoad() async {
+  Future<void> onLoad() async {
     final level = await TiledComponent.load(
       levelName,
       Vector2.all(32),
     );
-    add(level);
+    await add(level);
 
-    _levelBounds = Rect.fromLTWH(
-      0,
-      0,
-      (level.tileMap.map.width * level.tileMap.map.tileWidth).toDouble(),
-      (level.tileMap.map.height * level.tileMap.map.tileHeight).toDouble(),
-    );
-
-    _spawnActors(level.tileMap);
-    _setupCamera();
-
-    return super.onLoad();
+    _spawnActors(level);
+    _setupCamera(level);
   }
 
   // This method takes care of spawning
   // all the actors in the game world.
-  void _spawnActors(RenderableTiledMap tileMap) {
+  void _spawnActors(TiledComponent level) {
+    final tileMap = level.tileMap;
     final platformsLayer = tileMap.getLayer<ObjectGroup>('Platforms');
 
     for (final platformObject in platformsLayer!.objects) {
@@ -62,12 +55,24 @@ class Level extends Component
 
       switch (spawnPoint.class_) {
         case 'Player':
+          final halfSize = size * 0.5;
+          final levelBounds = Rect.fromLTWH(
+            halfSize.x,
+            halfSize.y,
+            level.size.x - halfSize.x,
+            level.size.y - halfSize.y,
+          );
+
           _player = Player(
-            gameRef.spriteSheet,
+            game.spriteSheet,
             anchor: Anchor.center,
-            levelBounds: _levelBounds,
             position: position,
             size: size,
+            children: [
+              BoundedPositionBehavior(
+                bounds: Rectangle.fromRect(levelBounds),
+              ),
+            ],
           );
           add(_player);
 
@@ -75,7 +80,7 @@ class Level extends Component
 
         case 'Coin':
           final coin = Coin(
-            gameRef.spriteSheet,
+            game.spriteSheet,
             position: position,
             size: size,
           );
@@ -85,12 +90,13 @@ class Level extends Component
 
         case 'Enemy':
           // Find the target object.
-          final targetObjectId = spawnPoint.properties.getValue<int>('Target');
+          final targetObjectId =
+              int.parse(spawnPoint.properties.first.value.toString());
           final target = spawnPointsLayer.objects
               .firstWhere((object) => object.id == targetObjectId);
 
           final enemy = Enemy(
-            gameRef.spriteSheet,
+            game.spriteSheet,
             position: position,
             targetPosition: Vector2(target.x, target.y),
             size: size,
@@ -101,13 +107,11 @@ class Level extends Component
 
         case 'Door':
           final door = Door(
-            gameRef.spriteSheet,
+            game.spriteSheet,
             position: position,
             size: size,
             onPlayerEnter: () {
-              parent.loadLevel(
-                spawnPoint.properties.getValue<String>('NextLevel')!,
-              );
+              parent.loadLevel(spawnPoint.properties.first.value.toString());
             },
           );
           add(door);
@@ -121,8 +125,15 @@ class Level extends Component
   // follow the player component and also for keeping
   // the camera within level bounds.
   /// NOTE: Call only after [_spawnActors].
-  void _setupCamera() {
-    gameRef.camera.followComponent(_player);
-    gameRef.camera.worldBounds = _levelBounds;
+  void _setupCamera(TiledComponent level) {
+    parent.camera.follow(_player, maxSpeed: 200);
+    parent.camera.setBounds(
+      Rectangle.fromLTRB(
+        game.fixedResolution.x / 2,
+        game.fixedResolution.y / 2,
+        level.width - game.fixedResolution.x / 2,
+        level.height - game.fixedResolution.y / 2,
+      ),
+    );
   }
 }
