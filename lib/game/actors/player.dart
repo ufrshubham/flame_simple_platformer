@@ -13,7 +13,7 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
   bool _jumpInput = false;
   bool _isOnGround = false;
 
-  final double _gravity = 10;
+  final double _gravity = 10 * 60;
   final double _jumpSpeed = 360;
   final double _moveSpeed = 200;
 
@@ -52,7 +52,7 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
     // Modify components of velocity based on
     // inputs and gravity.
     _velocity.x = _hAxisInput * _moveSpeed;
-    _velocity.y += _gravity;
+    _velocity.y += _gravity * dt;
 
     // Allow jump only if jump input is pressed
     // and player is already on ground.

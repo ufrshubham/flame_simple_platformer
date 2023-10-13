@@ -1,10 +1,9 @@
-import 'package:flame/camera.dart';
-import 'package:flame/experimental.dart';
-import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
+import 'package:flame/components.dart';
 
 import 'game.dart';
 import 'hud/hud.dart';
 import 'level/level.dart';
+import 'utils/audio_manager.dart';
 
 // This component is responsible for the whole game play.
 class GamePlay extends World with HasGameReference<SimplePlatformer> {

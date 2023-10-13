@@ -1,8 +1,8 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/image_composition.dart';
-import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 
+import '../utils/audio_manager.dart';
 import 'player.dart';
 
 // Represents a door in the game world.

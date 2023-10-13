@@ -1,11 +1,10 @@
 import 'package:flame/components.dart';
-import 'package:flame/experimental.dart';
 import 'package:flame/input.dart';
-import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 
 import '../game.dart';
 import '../overlays/game_over.dart';
 import '../overlays/pause_menu.dart';
+import '../utils/audio_manager.dart';
 
 class Hud extends Component with HasGameReference<SimplePlatformer> {
   late final TextComponent scoreTextComponent;
@@ -24,7 +23,7 @@ class Hud extends Component with HasGameReference<SimplePlatformer> {
     healthTextComponent = TextComponent(
       text: 'x5',
       anchor: Anchor.topRight,
-      position: Vector2(game.size.x - 10, 10),
+      position: Vector2(game.fixedResolution.x - 10, 10),
     );
     await add(healthTextComponent);
 
@@ -54,7 +53,7 @@ class Hud extends Component with HasGameReference<SimplePlatformer> {
       ),
       size: Vector2.all(32),
       anchor: Anchor.topCenter,
-      position: Vector2(game.size.x / 2, 5),
+      position: Vector2(game.fixedResolution.x / 2, 5),
     );
     await add(pauseButton);
   }
