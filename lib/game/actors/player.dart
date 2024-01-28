@@ -1,7 +1,6 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
-import 'package:flame/image_composition.dart';
 import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 import 'package:flutter/services.dart';
 
@@ -21,25 +20,17 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
   final Vector2 _velocity = Vector2.zero();
 
   Player(
-    Image image, {
-    Vector2? position,
-    Vector2? size,
-    Vector2? scale,
-    double? angle,
-    Anchor? anchor,
-    int? priority,
-    Iterable<Component>? children,
+    super.image, {
+    super.position,
+    super.size,
+    super.scale,
+    super.angle,
+    super.anchor,
+    super.priority,
+    super.children,
   }) : super.fromImage(
-          image,
           srcPosition: Vector2.zero(),
           srcSize: Vector2.all(32),
-          position: position,
-          size: size,
-          scale: scale,
-          angle: angle,
-          anchor: anchor,
-          priority: priority,
-          children: children,
         );
 
   @override

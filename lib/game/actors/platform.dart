@@ -4,19 +4,13 @@ import 'package:flame/components.dart';
 // Represents a platform in the game world.
 class Platform extends PositionComponent with CollisionCallbacks {
   Platform({
-    required Vector2 position,
-    required Vector2 size,
-    Vector2? scale,
-    double? angle,
-    Anchor? anchor,
+    required Vector2 super.position,
+    required Vector2 super.size,
+    super.scale,
+    super.angle,
+    super.anchor,
     int? priority,
-  }) : super(
-          position: position,
-          size: size,
-          scale: scale,
-          angle: angle,
-          anchor: anchor,
-        );
+  });
 
   @override
   Future<void> onLoad() async {

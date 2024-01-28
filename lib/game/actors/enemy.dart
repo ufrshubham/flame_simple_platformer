@@ -1,7 +1,6 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
-import 'package:flame/image_composition.dart';
 
 import '../game.dart';
 import '../utils/audio_manager.dart';
@@ -13,24 +12,18 @@ class Enemy extends SpriteComponent
   static final Vector2 _up = Vector2(0, -1);
 
   Enemy(
-    Image image, {
+    super.image, {
     Vector2? position,
     Vector2? targetPosition,
-    Vector2? size,
-    Vector2? scale,
-    double? angle,
-    Anchor? anchor,
-    int? priority,
+    super.size,
+    super.scale,
+    super.angle,
+    super.anchor,
+    super.priority,
   }) : super.fromImage(
-          image,
           srcPosition: Vector2(1 * 32, 0),
           srcSize: Vector2.all(32),
           position: position,
-          size: size,
-          scale: scale,
-          angle: angle,
-          anchor: anchor,
-          priority: priority,
         ) {
     if (targetPosition != null && position != null) {
       // Need to sequence two move to effects so that we can

@@ -19,7 +19,7 @@ class MainMenu extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: 100,
+              width: 120,
               child: ElevatedButton(
                 onPressed: () {
                   game.overlays.remove(id);
@@ -29,7 +29,7 @@ class MainMenu extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 100,
+              width: 120,
               child: ElevatedButton(
                 onPressed: () {
                   game.overlays.remove(id);
