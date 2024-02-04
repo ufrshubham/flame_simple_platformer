@@ -1,12 +1,11 @@
 import 'package:flame/game.dart';
+import 'package:flame_simple_platformer/game/game.dart';
+import 'package:flame_simple_platformer/game/overlays/game_over.dart';
+import 'package:flame_simple_platformer/game/overlays/main_menu.dart';
+import 'package:flame_simple_platformer/game/overlays/pause_menu.dart';
 import 'package:flame_simple_platformer/game/overlays/settings.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-
-import 'game/game.dart';
-import 'game/overlays/game_over.dart';
-import 'game/overlays/main_menu.dart';
-import 'game/overlays/pause_menu.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());

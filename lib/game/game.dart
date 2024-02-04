@@ -1,10 +1,9 @@
-import 'package:flame/game.dart';
-import 'package:flame/flame.dart';
 import 'package:flame/extensions.dart';
+import 'package:flame/flame.dart';
+import 'package:flame/game.dart';
 import 'package:flame/input.dart';
+import 'package:flame_simple_platformer/game/model/player_data.dart';
 import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
-
-import 'model/player_data.dart';
 
 // Represents the game world
 class SimplePlatformer extends FlameGame

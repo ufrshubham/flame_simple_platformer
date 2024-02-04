@@ -1,14 +1,13 @@
+import 'package:flame_simple_platformer/game/game.dart';
+import 'package:flame_simple_platformer/game/game_play.dart';
 import 'package:flame_simple_platformer/game/overlays/settings.dart';
 import 'package:flutter/material.dart';
-
-import '../game.dart';
-import '../game_play.dart';
 
 class MainMenu extends StatelessWidget {
   static const id = 'MainMenu';
   final SimplePlatformer game;
 
-  const MainMenu({super.key, required this.game});
+  const MainMenu({required this.game, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,7 @@ class MainMenu extends StatelessWidget {
                 },
                 child: const Text('Settings'),
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -1,10 +1,10 @@
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
 
-import '../game.dart';
-import '../overlays/game_over.dart';
-import '../overlays/pause_menu.dart';
-import '../utils/audio_manager.dart';
+import 'package:flame_simple_platformer/game/game.dart';
+import 'package:flame_simple_platformer/game/overlays/game_over.dart';
+import 'package:flame_simple_platformer/game/overlays/pause_menu.dart';
+import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 
 class Hud extends Component with HasGameReference<SimplePlatformer> {
   late final TextComponent scoreTextComponent;
@@ -33,7 +33,9 @@ class Hud extends Component with HasGameReference<SimplePlatformer> {
       srcSize: Vector2.all(32),
       anchor: Anchor.topRight,
       position: Vector2(
-          healthTextComponent.position.x - healthTextComponent.size.x - 5, 5),
+        healthTextComponent.position.x - healthTextComponent.size.x - 5,
+        5,
+      ),
     );
     await add(playerSprite);
 

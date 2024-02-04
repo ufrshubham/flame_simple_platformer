@@ -1,14 +1,13 @@
+import 'package:flame_simple_platformer/game/game.dart';
+import 'package:flame_simple_platformer/game/overlays/main_menu.dart';
 import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 import 'package:flutter/material.dart';
-
-import '../game.dart';
-import 'main_menu.dart';
 
 class PauseMenu extends StatelessWidget {
   static const id = 'PauseMenu';
   final SimplePlatformer game;
 
-  const PauseMenu({super.key, required this.game});
+  const PauseMenu({required this.game, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,7 @@ class PauseMenu extends StatelessWidget {
                 },
                 child: const Text('Exit'),
               ),
-            )
+            ),
           ],
         ),
       ),

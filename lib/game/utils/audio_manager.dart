@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 // This class is responsible for playing all the sound effects
 // and background music in this game.
 class AudioManager {
-  static final sfx = ValueNotifier(true);
-  static final bgm = ValueNotifier(true);
+  static final sfx = ValueNotifier(false);
+  static final bgm = ValueNotifier(false);
 
   static Future<void> init() async {
     FlameAudio.bgm.initialize();

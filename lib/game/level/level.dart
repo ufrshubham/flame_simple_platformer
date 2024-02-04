@@ -2,15 +2,14 @@ import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/experimental.dart';
 import 'package:flame/extensions.dart';
+import 'package:flame_simple_platformer/game/actors/coin.dart';
+import 'package:flame_simple_platformer/game/actors/door.dart';
+import 'package:flame_simple_platformer/game/actors/enemy.dart';
+import 'package:flame_simple_platformer/game/actors/platform.dart';
+import 'package:flame_simple_platformer/game/actors/player.dart';
+import 'package:flame_simple_platformer/game/game.dart';
+import 'package:flame_simple_platformer/game/game_play.dart';
 import 'package:flame_tiled/flame_tiled.dart';
-
-import '../game.dart';
-import '../actors/coin.dart';
-import '../actors/door.dart';
-import '../actors/enemy.dart';
-import '../actors/player.dart';
-import '../actors/platform.dart';
-import '../game_play.dart';
 
 // Represents a level in game. Should only be added as child of GamePlay
 class Level extends Component

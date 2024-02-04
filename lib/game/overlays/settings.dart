@@ -1,14 +1,13 @@
+import 'package:flame_simple_platformer/game/game.dart';
 import 'package:flame_simple_platformer/game/overlays/main_menu.dart';
 import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 import 'package:flutter/material.dart';
-
-import '../game.dart';
 
 class Settings extends StatelessWidget {
   static const id = 'Settings';
   final SimplePlatformer game;
 
-  const Settings({super.key, required this.game});
+  const Settings({required this.game, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +48,7 @@ class Settings extends StatelessWidget {
                 },
                 child: const Text('Back'),
               ),
-            )
+            ),
           ],
         ),
       ),

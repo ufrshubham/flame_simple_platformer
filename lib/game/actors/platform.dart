@@ -9,7 +9,6 @@ class Platform extends PositionComponent with CollisionCallbacks {
     super.scale,
     super.angle,
     super.anchor,
-    int? priority,
   });
 
   @override

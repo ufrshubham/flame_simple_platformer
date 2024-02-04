@@ -1,14 +1,13 @@
+import 'package:flame_simple_platformer/game/game.dart';
+import 'package:flame_simple_platformer/game/game_play.dart';
+import 'package:flame_simple_platformer/game/overlays/main_menu.dart';
 import 'package:flutter/material.dart';
-
-import '../game.dart';
-import '../game_play.dart';
-import 'main_menu.dart';
 
 class GameOver extends StatelessWidget {
   static const id = 'GameOver';
   final SimplePlatformer game;
 
-  const GameOver({super.key, required this.game});
+  const GameOver({required this.game, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,7 @@ class GameOver extends StatelessWidget {
                 },
                 child: const Text('Exit'),
               ),
-            )
+            ),
           ],
         ),
       ),

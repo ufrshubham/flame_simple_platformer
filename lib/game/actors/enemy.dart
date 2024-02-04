@@ -1,10 +1,9 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
-
-import '../game.dart';
-import '../utils/audio_manager.dart';
-import 'player.dart';
+import 'package:flame_simple_platformer/game/actors/player.dart';
+import 'package:flame_simple_platformer/game/game.dart';
+import 'package:flame_simple_platformer/game/utils/audio_manager.dart';
 
 // Represents an enemy in the game world.
 class Enemy extends SpriteComponent
@@ -33,12 +32,12 @@ class Enemy extends SpriteComponent
           MoveToEffect(
             targetPosition,
             EffectController(speed: 100),
-            onComplete: () => flipHorizontallyAroundCenter(),
+            onComplete: flipHorizontallyAroundCenter,
           ),
           MoveToEffect(
             position + Vector2(32, 0), // Need to offset by 32 due to flip
             EffectController(speed: 100),
-            onComplete: () => flipHorizontallyAroundCenter(),
+            onComplete: flipHorizontallyAroundCenter,
           ),
         ],
         infinite: true,
@@ -55,7 +54,9 @@ class Enemy extends SpriteComponent
 
   @override
   void onCollisionStart(
-      Set<Vector2> intersectionPoints, PositionComponent other) {
+    Set<Vector2> intersectionPoints,
+    PositionComponent other,
+  ) {
     if (other is Player) {
       final playerDir = (other.absoluteCenter - absoluteCenter).normalized();
 
@@ -65,7 +66,7 @@ class Enemy extends SpriteComponent
         add(
           OpacityEffect.fadeOut(
             LinearEffectController(0.2),
-            onComplete: () => removeFromParent(),
+            onComplete: removeFromParent,
           ),
         );
         other.jump();
