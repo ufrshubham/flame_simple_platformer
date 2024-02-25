@@ -73,7 +73,7 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
   }
 
   @override
-  bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+  bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     _hAxisInput = 0;
 
     _hAxisInput += keysPressed.contains(LogicalKeyboardKey.keyA) ? -1 : 0;
