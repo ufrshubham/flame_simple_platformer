@@ -16,6 +16,7 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
   final double _moveSpeed = 200;
 
   final Vector2 _up = Vector2(0, -1);
+  final Vector2 _down = Vector2(0, 1);
   final Vector2 _velocity = Vector2.zero();
 
   Player(
@@ -96,10 +97,14 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
         final separationDistance = (size.x / 2) - collisionNormal.length;
         collisionNormal.normalize();
 
-        // If collision normal is almost upwards,
-        // player must be on ground.
         if (_up.dot(collisionNormal) > 0.9) {
+          // If collision normal is almost upwards,
+          // player must be on ground.
           _isOnGround = true;
+        } else if (_down.dot(collisionNormal) > 0.9) {
+          // If collision normal is almost downwards,
+          // player must be hitting the ceiling.
+          _velocity.y = 0;
         }
 
         // Resolve collision by moving player along
