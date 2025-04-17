@@ -28,10 +28,7 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
     super.anchor,
     super.priority,
     super.children,
-  }) : super.fromImage(
-          srcPosition: Vector2.zero(),
-          srcSize: Vector2.all(32),
-        );
+  }) : super.fromImage(srcPosition: Vector2.zero(), srcSize: Vector2.all(32));
 
   @override
   Future<void> onLoad() async {
@@ -89,7 +86,8 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
     if (other is Platform) {
       if (intersectionPoints.length == 2) {
         // Calculate the collision normal and separation distance.
-        final mid = (intersectionPoints.elementAt(0) +
+        final mid =
+            (intersectionPoints.elementAt(0) +
                 intersectionPoints.elementAt(1)) /
             2;
 
@@ -120,11 +118,7 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
   void hit() {
     add(
       OpacityEffect.fadeOut(
-        EffectController(
-          alternate: true,
-          duration: 0.1,
-          repeatCount: 5,
-        ),
+        EffectController(alternate: true, duration: 0.1, repeatCount: 5),
       ),
     );
   }

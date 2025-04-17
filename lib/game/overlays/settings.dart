@@ -21,22 +21,24 @@ class Settings extends StatelessWidget {
               width: 300,
               child: ValueListenableBuilder<bool>(
                 valueListenable: AudioManager.sfx,
-                builder: (context, sfx, child) => SwitchListTile(
-                  title: const Text('Sound Effects'),
-                  value: sfx,
-                  onChanged: (value) => AudioManager.sfx.value = value,
-                ),
+                builder:
+                    (context, sfx, child) => SwitchListTile(
+                      title: const Text('Sound Effects'),
+                      value: sfx,
+                      onChanged: (value) => AudioManager.sfx.value = value,
+                    ),
               ),
             ),
             SizedBox(
               width: 300,
               child: ValueListenableBuilder<bool>(
                 valueListenable: AudioManager.bgm,
-                builder: (context, bgm, child) => SwitchListTile(
-                  title: const Text('Background Music'),
-                  value: bgm,
-                  onChanged: (value) => AudioManager.bgm.value = value,
-                ),
+                builder:
+                    (context, bgm, child) => SwitchListTile(
+                      title: const Text('Background Music'),
+                      value: bgm,
+                      onChanged: (value) => AudioManager.bgm.value = value,
+                    ),
               ),
             ),
             SizedBox(

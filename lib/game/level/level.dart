@@ -21,10 +21,7 @@ class Level extends Component
 
   @override
   Future<void> onLoad() async {
-    final level = await TiledComponent.load(
-      levelName,
-      Vector2.all(32),
-    );
+    final level = await TiledComponent.load(levelName, Vector2.all(32));
     await add(level);
 
     _spawnActors(level);
@@ -67,9 +64,7 @@ class Level extends Component
             position: position,
             size: size,
             children: [
-              BoundedPositionBehavior(
-                bounds: Rectangle.fromRect(levelBounds),
-              ),
+              BoundedPositionBehavior(bounds: Rectangle.fromRect(levelBounds)),
             ],
           );
           add(_player);
@@ -77,21 +72,19 @@ class Level extends Component
           break;
 
         case 'Coin':
-          final coin = Coin(
-            game.spriteSheet,
-            position: position,
-            size: size,
-          );
+          final coin = Coin(game.spriteSheet, position: position, size: size);
           add(coin);
 
           break;
 
         case 'Enemy':
           // Find the target object.
-          final targetObjectId =
-              int.parse(spawnPoint.properties.first.value.toString());
-          final target = spawnPointsLayer.objects
-              .firstWhere((object) => object.id == targetObjectId);
+          final targetObjectId = int.parse(
+            spawnPoint.properties.first.value.toString(),
+          );
+          final target = spawnPointsLayer.objects.firstWhere(
+            (object) => object.id == targetObjectId,
+          );
 
           final enemy = Enemy(
             game.spriteSheet,
