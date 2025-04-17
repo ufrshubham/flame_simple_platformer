@@ -20,25 +20,28 @@ class Enemy extends SpriteComponent
     super.anchor,
     super.priority,
   }) : super.fromImage(
-         srcPosition: Vector2(1 * 32, 0),
-         srcSize: Vector2.all(32),
-         position: position,
-       ) {
+          srcPosition: Vector2(1 * 32, 0),
+          srcSize: Vector2.all(32),
+          position: position,
+        ) {
     if (targetPosition != null && position != null) {
       // Need to sequence two move to effects so that we can
       // tap into the onFinishCallback and flip the component.
-      final effect = SequenceEffect([
-        MoveToEffect(
-          targetPosition,
-          EffectController(speed: 100),
-          onComplete: flipHorizontallyAroundCenter,
-        ),
-        MoveToEffect(
-          position + Vector2(32, 0), // Need to offset by 32 due to flip
-          EffectController(speed: 100),
-          onComplete: flipHorizontallyAroundCenter,
-        ),
-      ], infinite: true);
+      final effect = SequenceEffect(
+        [
+          MoveToEffect(
+            targetPosition,
+            EffectController(speed: 100),
+            onComplete: flipHorizontallyAroundCenter,
+          ),
+          MoveToEffect(
+            position + Vector2(32, 0), // Need to offset by 32 due to flip
+            EffectController(speed: 100),
+            onComplete: flipHorizontallyAroundCenter,
+          ),
+        ],
+        infinite: true,
+      );
 
       add(effect);
     }
