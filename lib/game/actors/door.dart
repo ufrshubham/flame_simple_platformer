@@ -18,9 +18,9 @@ class Door extends SpriteComponent with CollisionCallbacks {
     super.anchor,
     super.priority,
   }) : super.fromImage(
-         srcPosition: Vector2(2 * 32, 0),
-         srcSize: Vector2.all(32),
-       );
+          srcPosition: Vector2(2 * 32, 0),
+          srcSize: Vector2.all(32),
+        );
 
   @override
   Future<void> onLoad() async {

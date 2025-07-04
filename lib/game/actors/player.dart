@@ -86,8 +86,7 @@ class Player extends SpriteComponent with CollisionCallbacks, KeyboardHandler {
     if (other is Platform) {
       if (intersectionPoints.length == 2) {
         // Calculate the collision normal and separation distance.
-        final mid =
-            (intersectionPoints.elementAt(0) +
+        final mid = (intersectionPoints.elementAt(0) +
                 intersectionPoints.elementAt(1)) /
             2;
 
